@@ -84,8 +84,9 @@ if RUBYMOTION_ENV == "development"
         end
       end
 
-      rmq.view_controller.view.subviews.each {|s| s.removeFromSuperview}
-      rmq.view_controller.send(:on_load)
+      cvc = rmq.view_controller
+      cvc.send(:on_code_reload) if cvc.respond_to?(:on_code_reload)
+
       "Reloaded"
     end
 
