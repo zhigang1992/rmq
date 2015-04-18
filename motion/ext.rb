@@ -83,7 +83,9 @@ if RUBYMOTION_ENV == "development"
           @files_modified_date[file_path] = File.mtime(file_path)
         end
       end
-      
+
+      rmq.view_controller.view.subviews.each {|s| s.removeFromSuperview}
+      rmq.view_controller.send(:on_load)
       "Reloaded"
     end
 
